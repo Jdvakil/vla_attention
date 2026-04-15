@@ -1,0 +1,41 @@
+# LIBERO task metadata. The categorization follows the splits released with
+# the LIBERO benchmark (Liu et al., NeurIPS 2023).
+
+suites:
+  libero_spatial:
+    category: language_dominant
+    n_tasks: 10
+    description: >
+      Tasks where spatial relations are specified in language (e.g. "put the
+      cup to the left of the bowl"). Visual scene is simple; language carries
+      the informative signal.
+  libero_object:
+    category: vision_dominant
+    n_tasks: 10
+    description: >
+      Tasks where the target object must be visually disambiguated from
+      distractors with similar attributes. Visual grounding is required.
+  libero_goal:
+    category: language_dominant
+    n_tasks: 10
+    description: >
+      Goal-conditioned tasks with abstract linguistic goals; language parses
+      the high-level intent.
+  libero_long:
+    category: vision_dominant
+    n_tasks: 10
+    description: >
+      Long-horizon tasks requiring sustained visual tracking through multiple
+      subgoals.
+  libero_10:
+    category: mixed
+    n_tasks: 10
+    description: The LIBERO-10 held-out suite.
+
+# Per-task instruction templates (abbreviated). Full instructions live in the
+# LIBERO dataset; we keep the list short here for logging clarity.
+task_examples:
+  libero_spatial_0: "pick up the black bowl between the plate and the ramekin"
+  libero_object_0:  "pick up the alphabet soup"
+  libero_goal_0:    "open the middle drawer of the cabinet"
+  libero_long_0:    "put both the alphabet soup and the tomato sauce in the basket"

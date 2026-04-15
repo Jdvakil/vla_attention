@@ -1,0 +1,78 @@
+{
+  "mode": "dev",
+  "seed": 42,
+  "phase1": {
+    "libero_mean_success": 0.8674652731350432,
+    "libero_per_suite": {
+      "spatial": 0.8595771476637651,
+      "object": 0.8605312437174252,
+      "goal": 0.8570563597318441,
+      "long": 0.892696341427138
+    },
+    "simpler_mean_success": 0.6980168946013031
+  },
+  "phase2": {
+    "modality_peak_layer_visual": 1,
+    "modality_peak_layer_language": 26,
+    "taxonomy_k": 6,
+    "taxonomy_silhouette": 0.9095433354377747,
+    "cluster_names": {
+      "0": "visual_localization_sharp",
+      "5": "visual_localization_broad",
+      "4": "language_integration_sharp",
+      "1": "language_integration_broad",
+      "3": "language_integration_mixed",
+      "2": "action_history"
+    }
+  },
+  "phase3": {
+    "cutoff_layer": 24,
+    "knockout_aggregate_drop": {
+      "visual_localization_sharp": 0.28622029780659775,
+      "language_integration_broad": 0.2657455360821257,
+      "action_history": 0.1643734133175383,
+      "language_integration_mixed": 0.2508175527981291,
+      "language_integration_sharp": 0.2748252606323729,
+      "visual_localization_broad": 0.2586187577179442
+    }
+  },
+  "phase4": {
+    "pruning_methods": [
+      "attention_is",
+      "random",
+      "scizor_proxy"
+    ],
+    "pruning_fractions": [
+      1.0,
+      0.7,
+      0.5,
+      0.4,
+      0.3
+    ],
+    "pruning_success": [
+      [
+        0.8674652731350432,
+        0.8815298139282931,
+        0.8820612724230343,
+        0.8715881690767424,
+        0.858180805367492
+      ],
+      [
+        0.8674652731350432,
+        0.8676806349127637,
+        0.8658870944503277,
+        0.8553572143211335,
+        0.8397561549866613
+      ],
+      [
+        0.8674652731350432,
+        0.8599773887893144,
+        0.8524564995225012,
+        0.8355639664746275,
+        0.8097103883002978
+      ]
+    ],
+    "rescue_vi_delta": 0.3334345817565918,
+    "rescue_success_delta": 0.27687349915504456
+  }
+}

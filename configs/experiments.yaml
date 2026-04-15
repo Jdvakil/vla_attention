@@ -1,0 +1,67 @@
+# Experiment configuration. Each experiment lists the rollouts / seeds / tasks
+# required to reproduce the corresponding paper figure.
+
+phase1:
+  baseline:
+    n_rollouts_per_task: 20
+    seeds: [0, 1, 2]
+    max_steps: 300
+    output_dir: results/phase1_baseline
+
+phase2:
+  exp1_modality_dominance:
+    n_tasks: 50
+    n_rollouts_per_task: 100
+    task_categories:
+      language_dominant: [libero_spatial, libero_goal]
+      vision_dominant:   [libero_object, libero_long]
+    output_dir: results/phase2_exp1_modality
+
+  exp2_head_taxonomy:
+    n_clusters: 6
+    cluster_range: [5, 6, 7]
+    features: [visual_focus, language_focus, spatial_entropy, cross_task_consistency]
+    output_dir: results/phase2_exp2_heads
+
+  exp3_attention_rollout:
+    n_examples: 20
+    action_dims: [0, 1, 2, 3, 4, 5, 6]   # 7 DoF
+    output_dir: results/phase2_exp3_rollout
+
+  exp4_logit_lens:
+    output_dir: results/phase2_exp4_logit_lens
+
+phase3:
+  exp5_visual_ablation:
+    ablation_layers: [2, 4, 8, 12, 16, 20, 24, 28]
+    ablation_mode: zero     # one of: zero | mean | patch_mask
+    n_rollouts_per_cond: 100
+    output_dir: results/phase3_exp5_ablation
+
+  exp6_head_knockout:
+    n_rollouts_per_cond: 100
+    output_dir: results/phase3_exp6_knockout
+
+  exp7_activation_patching:
+    n_success_rollouts: 20
+    n_failure_rollouts: 20
+    n_tasks: 10
+    output_dir: results/phase3_exp7_patching
+
+phase4:
+  exp8_is_pruning:
+    fractions: [1.0, 0.5, 0.4, 0.3]
+    seeds: [0, 1, 2]
+    baselines: [random, scizor]
+    output_dir: results/phase4_exp8_pruning
+
+  exp9_grounding_rescue:
+    low_vi_percentile: 20
+    augmentations: [color_jitter, distractor_objects, background_swap]
+    output_dir: results/phase4_exp9_rescue
+
+# Dev mode: when True, all experiments pull data from the synthetic attention
+# generator instead of running real MolmoAct inference. Lets the analysis +
+# plotting pipeline run end-to-end on CPU.
+dev_mode: true
+synthetic_seed: 42

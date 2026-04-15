@@ -1,0 +1,40 @@
+# Model configuration.
+# Default: MolmoAct (Allen AI action-reasoning VLA). Switch `model.family` to
+# "openvla" to use OpenVLA-7B instead.
+
+model:
+  family: molmoact            # one of: molmoact | openvla
+  hf_id: allenai/MolmoAct-7B-D-0812
+  # Fine-tuned LIBERO checkpoints (used for task-specific evaluation):
+  libero_checkpoints:
+    spatial: allenai/MolmoAct-7B-D-LIBERO-Spatial-0812
+    object:  allenai/MolmoAct-7B-D-LIBERO-Object-0812
+    goal:    allenai/MolmoAct-7B-D-LIBERO-Goal-0812
+    long:    allenai/MolmoAct-7B-D-LIBERO-Long-0812
+
+# Architecture (used by the synthetic attention generator and by the analysis
+# utilities to slice per-modality attention without having to re-introspect
+# the live model each time). These match the published MolmoAct-7B-D config.
+arch:
+  n_layers: 28
+  n_heads: 16
+  d_model: 3584
+  # Visual token count: MolmoAct emits ~729 tokens per image (27x27 SigLIP
+  # grid after the MLP projector). When depth tokens are active this grows.
+  n_visual_tokens: 729
+  # Depth perception tokens (MolmoAct ARM stage-1 output). Set to 0 to ignore.
+  n_depth_tokens: 128
+  # Typical language prompt length for LIBERO-style tasks.
+  n_language_tokens: 32
+  # 7-DoF action, predicted autoregressively. Each token is one DoF.
+  n_action_tokens: 7
+
+# Alternate architecture profile for OpenVLA-7B (Llama-2 backbone).
+openvla_arch:
+  n_layers: 32
+  n_heads: 32
+  d_model: 4096
+  n_visual_tokens: 256
+  n_depth_tokens: 0
+  n_language_tokens: 32
+  n_action_tokens: 7

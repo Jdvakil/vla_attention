@@ -1,0 +1,17 @@
+# Lightweight analysis + plotting deps (runnable on CPU, used for the offline
+# analysis / plotting pipeline and for the synthetic-data dev mode).
+numpy>=1.24
+matplotlib>=3.7
+seaborn>=0.13
+scikit-learn>=1.3
+pandas>=2.0
+pyyaml>=6.0
+einops>=0.7
+tqdm>=4.65
+
+# Heavy runtime deps (uncomment on a GPU host to load real MolmoAct/OpenVLA):
+# torch>=2.2
+# torchvision>=0.17
+# transformers>=4.44
+# accelerate>=0.30
+# Pillow>=10.0

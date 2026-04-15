@@ -1,0 +1,11 @@
+# Install on a GPU host to run real MolmoAct / OpenVLA inference and LIBERO evals.
+-r requirements.txt
+
+torch>=2.2
+torchvision>=0.17
+transformers>=4.44
+accelerate>=0.30
+Pillow>=10.0
+
+# Optional: vLLM for fast MolmoAct inference
+# vllm>=0.5
